@@ -1,13 +1,5 @@
-  ```python3
-  class Solution:
-    def minimumRounds(self, tasks: List[int]) -> int:
-        counter = {}
-        dp = [0, 0, 1, 1, 2]
-        for i in range(len(tasks)):
-            if not tasks[i] in counter:
-                counter[tasks[i]] = 0
-            counter[tasks[i]] += 1
-        for i in range(5, max(counter.values()) + 1):
-            dp.append(1 + min(dp[i-2], dp[i-3]))
-        return -1 if 1 in counter.values() else sum([dp[i] for i in counter.values()])
- ```
+```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
