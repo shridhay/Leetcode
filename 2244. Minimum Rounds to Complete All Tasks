@@ -1,3 +1,4 @@
+```python
 def minimumRounds(self, tasks: List[int]) -> int:
     counter = {}
     dp = [0, 0, 1, 1, 2]
@@ -8,3 +9,4 @@ def minimumRounds(self, tasks: List[int]) -> int:
     for i in range(5, max(counter.values()) + 1):
         dp.append(1 + min(dp[i-2], dp[i-3]))
     return -1 if 1 in counter.values() else sum([dp[i] for i in counter.values()]
+'''
