@@ -1,0 +1,38 @@
+The crux of this question is using Depth-First Search to go through all of the nodes that are conencted to the source node to check if a 
+connected node is equal to the destination node. Cannonically, Depth-First Search uses a stack and the pop() function to pop elements from
+the top of a stack.  If none of the nodes connected to the source node are the destination node, a False value is returned at the very end.
+```python
+def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    visited = [True for i in range(n)]
+    adj_list = {i:[] for i in range(n)}
+    for i in range(len(edges)):
+        adj_list[edges[i][0]].append(edges[i][1])
+        adj_list[edges[i][1]].append(edges[i][0])
+    stack = [source]
+    while stack:
+        elem = stack.pop()
+        if elem == destination:
+            return True
+        visited[elem] = False
+        stack.extend([i for i in adj_list[elem] if visited[i]])
+    return False
+```
+
+This problem can also be completed using Breadth-First Search.  Though the Time Limit is Exceeded:
+
+```python
+def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+    visited = [True for i in range(n)]
+    adj_list = {i:[] for i in range(n)}
+    for i in range(len(edges)):
+        adj_list[edges[i][0]].append(edges[i][1])
+        adj_list[edges[i][1]].append(edges[i][0])
+    Q = [source]
+    while Q:
+        elem = Q.pop(0)
+        if elem == destination:
+            return True
+        visited[elem] = False
+        Q.extend([i for i in adj_list[elem] if visited[i]])
+    return False
+```
